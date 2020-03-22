@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Corona Stats</string>
+    <string name="global_empty_result">-</string>
+    <string name="global_recovered">Recovered</string>
+    <string name="global_dead">Dead</string>
+    <string name="global_cases">Cases</string>
+
+    <string name="main_total_cases">Total Cases</string>
+
+
+    <string name="country_cases">Cases %s</string>
+    <string name="country_dead">Dead %s</string>
+
+</resources>

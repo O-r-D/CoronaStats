@@ -1,4 +1,4 @@
-package com.ord.coronastats.ui
+package com.ord.coronastats.ui.country
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +20,8 @@ class CountryStatsFragment : Fragment() {
     private lateinit var viewModel: CountryStatsViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_country_stats, container, false)
@@ -32,7 +33,7 @@ class CountryStatsFragment : Fragment() {
             ViewModelProvider(this, it).get(CountryStatsViewModel::class.java)
         }
 
-        viewModel.fetchCountryStats("Germany").observe(viewLifecycleOwner, Observer {
+        viewModel.fetchCountryStats("Lebanon").observe(viewLifecycleOwner, Observer {
             tv_cases_nb.text = String.format("%,d", it.cases)
             if (it.todayCases != 0)
                 tv_cases.text = getString(
@@ -44,7 +45,7 @@ class CountryStatsFragment : Fragment() {
             if (it.todayDeaths != 0)
                 tv_deaths.text = getString(
                     R.string.country_dead,
-                    "(${String.format("%,d", it.todayDeaths)}"
+                    "(${String.format("%,d", it.todayDeaths)})"
                 )
 
             tv_recovered_nb.text = String.format("%,d", it.recovered)

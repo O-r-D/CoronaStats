@@ -13,5 +13,5 @@ data class CountryStats(
     val todayDeaths: Int
 ) {
 
-    override fun toString(): String = "$country:\n$cases Cases\n$deaths Dead\n$recovered Recovered"
+    override fun toString(): String = "$country:\n$cases Cases\n$deaths Dead\n$recovered Recovered\n"
 }

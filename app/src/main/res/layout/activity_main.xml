@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.MainActivity">
+        tools:context=".ui.main.MainActivity">
     <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:layout_weight="1"
@@ -59,7 +59,7 @@
     </TableLayout>
     <androidx.fragment.app.FragmentContainerView
             android:layout_width="0dp"
-            android:layout_height="0dp" android:name="com.ord.coronastats.ui.CountryStatsFragment"
+            android:layout_height="0dp"
             android:id="@+id/fragment"
             app:layout_constraintTop_toBottomOf="@+id/tableLayout" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -10,11 +10,14 @@ import retrofit2.http.Path
 
 interface NovelCOVIDAPI {
 
-    @GET("all/")
+    @GET("all")
     fun getWorldStats(): Call<WorldStats>
 
     @GET("countries/{country}")
     fun getCountryStats(@Path("country") country: String): Call<CountryStats>
+
+    @GET("countries")
+    fun getCountriesStats(): Call<List<CountryStats>>
 
     companion object{
         operator fun invoke(): NovelCOVIDAPI{

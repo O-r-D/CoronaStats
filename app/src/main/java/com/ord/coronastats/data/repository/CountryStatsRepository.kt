@@ -33,10 +33,10 @@ class CountryStatsRepository {
 
     companion object {
         @Volatile
-        private var instance: CountryStatsRepository? = null
+        private var instance: CountriesStatsRepository? = null
 
-        operator fun invoke() = instance ?: synchronized(this) {
-            instance ?: CountryStatsRepository().also {
+        operator fun invoke(): CountriesStatsRepository = instance ?: synchronized(this) {
+            instance ?: CountriesStatsRepository().also {
                 instance = it
             }
         }

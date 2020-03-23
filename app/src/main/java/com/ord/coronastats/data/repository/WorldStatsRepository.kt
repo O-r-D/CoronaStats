@@ -16,7 +16,6 @@ class WorldStatsRepository {
         val novelCovidClient = NovelCOVIDAPI()
         val totalCases = MutableLiveData<WorldStats>()
 
-        Log.i(TAG, "Starting...")
         novelCovidClient.getWorldStats().enqueue(object : Callback<WorldStats> {
             override fun onFailure(call: Call<WorldStats>, t: Throwable) {
                 Log.e(TAG, t.message)

@@ -1,4 +1,4 @@
-package com.ord.coronastats.ui
+package com.ord.coronastats.ui.country
 
 import androidx.lifecycle.ViewModel
 import com.ord.coronastats.data.repository.CountryStatsRepository

@@ -5,10 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.countrylist.CountryListFragment">
-
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" android:id="@+id/tv_test"/>
-
+            android:layout_height="match_parent" android:id="@+id/rv_countries"/>
 </FrameLayout>

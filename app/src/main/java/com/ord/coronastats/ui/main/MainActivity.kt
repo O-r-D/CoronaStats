@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             if (savedInstanceState != null)
                 return
 
-            supportFragmentManager.beginTransaction().add(R.id.fragment, CountryListFragment()).commit()
+            supportFragmentManager.beginTransaction().add(R.id.fragment, CountryStatsFragment()).commit()
         }
     }
 }

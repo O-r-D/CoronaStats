@@ -1,6 +1,9 @@
 package com.ord.coronastats.ui.country
 
+import android.content.Context
 import android.os.Bundle
+import android.telephony.TelephonyManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +36,9 @@ class CountryStatsFragment : Fragment() {
             ViewModelProvider(this, it).get(CountryStatsViewModel::class.java)
         }
 
-        viewModel.fetchCountryStats("Lebanon").observe(viewLifecycleOwner, Observer {
+        val country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "CH"
+
+        viewModel.fetchCountryStats(country).observe(viewLifecycleOwner, Observer {
             tv_cases_nb.text = String.format("%,d", it.cases)
             if (it.todayCases != 0)
                 tv_cases.text = getString(

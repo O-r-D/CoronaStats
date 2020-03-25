@@ -3,28 +3,26 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.country.CountryStatsFragment">
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/tv_country_name"
             tools:text="Lebanon" android:textColor="@android:color/black"
             android:textStyle="bold" android:textSize="30sp" android:fontFamily="monospace"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp" app:layout_constraintEnd_toStartOf="@+id/btn_change_country"
-            android:layout_marginEnd="123dp" app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"/>
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:background="@drawable/shape_cases_stat"
-            android:layout_height="100dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="150dp" android:layout_marginEnd="150dp" android:id="@+id/linearLayout3"
-            android:layout_marginTop="32dp"
             android:padding="10dp"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-    >
+            app:layout_constraintTop_toBottomOf="@+id/tv_country_name" android:layout_marginTop="32dp"
+            app:layout_constraintDimensionRatio="w,1:1">
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
@@ -39,13 +37,14 @@
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="150dp" android:layout_marginEnd="150dp"
             android:id="@+id/linearLayout" app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
             android:layout_marginTop="24dp" android:padding="10dp" android:background="@drawable/shape_death_stat"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/linearLayout2">
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintDimensionRatio="w,1:1">
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
@@ -61,13 +60,14 @@
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="100dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="150dp" android:layout_marginEnd="150dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:layout_marginTop="24dp"
             android:padding="10dp" android:background="@drawable/shape_recovered_stat" android:id="@+id/linearLayout2"
-            app:layout_constraintHorizontal_bias="0.5">
+            app:layout_constraintHorizontal_bias="0.5" android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_change_country" app:layout_constraintDimensionRatio="w,1:1">
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
@@ -83,9 +83,10 @@
     </LinearLayout>
     <Button
             android:text="Change"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_change_country"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="24dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

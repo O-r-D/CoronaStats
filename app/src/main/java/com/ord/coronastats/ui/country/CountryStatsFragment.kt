@@ -3,7 +3,6 @@ package com.ord.coronastats.ui.country
 import android.content.Context
 import android.os.Bundle
 import android.telephony.TelephonyManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ord.coronastats.R
+import com.ord.coronastats.ui.countrylist.CountryListFragment
 import com.ord.coronastats.utils.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_country_stats.*
 
@@ -36,6 +36,12 @@ class CountryStatsFragment : Fragment() {
             ViewModelProvider(this, it).get(CountryStatsViewModel::class.java)
         }
 
+        bindUI()
+
+    }
+
+    private fun bindUI() {
+
         val country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "CH"
 
         viewModel.fetchCountryStats(country).observe(viewLifecycleOwner, Observer {
@@ -54,7 +60,20 @@ class CountryStatsFragment : Fragment() {
                 )
 
             tv_recovered_nb.text = String.format("%,d", it.recovered)
+
+            tv_country_name.text = it.country
         })
+
+        btn_change_country.setOnClickListener {
+            goToCountryListFragment()
+        }
+    }
+
+    private fun goToCountryListFragment() {
+        parentFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment, CountryListFragment())
+            addToBackStack(null)
+        }.commit()
     }
 
 }

@@ -8,7 +8,7 @@
     <string name="main_total_cases">Total Cases</string>
 
 
-    <string name="country_cases">Cases %s</string>
-    <string name="country_dead">Dead %s</string>
+    <string name="country_cases">Cases\n%s</string>
+    <string name="country_dead">Dead\n%s</string>
 
 </resources>

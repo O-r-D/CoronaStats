@@ -7,7 +7,7 @@ import android.os.Parcelable
 data class CountryStats (
     val active: Int,
     val cases: Int,
-    val casesPerOneMillion: Int,
+    val casesPerOneMillion: Double,
     val country: String?,
     val critical: Int,
     val deaths: Int,
@@ -19,7 +19,7 @@ data class CountryStats (
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readInt(),
-        parcel.readInt(),
+        parcel.readDouble(),
         parcel.readString(),
         parcel.readInt(),
         parcel.readInt(),
@@ -33,7 +33,7 @@ data class CountryStats (
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(active)
         parcel.writeInt(cases)
-        parcel.writeInt(casesPerOneMillion)
+        parcel.writeDouble(casesPerOneMillion)
         parcel.writeString(country)
         parcel.writeInt(critical)
         parcel.writeInt(deaths)

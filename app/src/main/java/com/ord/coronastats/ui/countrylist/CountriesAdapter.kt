@@ -8,10 +8,10 @@ import com.ord.coronastats.R
 import com.ord.coronastats.data.model.CountryStats
 import kotlinx.android.synthetic.main.item_country.view.*
 
-class CountryListAdapter(
+class CountriesAdapter(
     private val countries: List<CountryStats>,
     private val itemClickListener: OnItemClickListener
-) : RecyclerView.Adapter<CountryListAdapter.CountryViewHolder>() {
+) : RecyclerView.Adapter<CountriesAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.item_country, parent, false).let {

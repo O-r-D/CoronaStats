@@ -6,7 +6,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.country.CountryStatsFragment
-import com.ord.coronastats.ui.countrylist.CountryListFragment
 import com.ord.coronastats.utils.InjectorUtils
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -11,7 +11,7 @@
             tools:text="Lebanon" android:textColor="@android:color/black"
             android:textStyle="bold" android:textSize="30sp" android:fontFamily="monospace"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="20dp"
             android:textAlignment="center"/>
     <LinearLayout
             android:orientation="vertical"

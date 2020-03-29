@@ -10,5 +10,6 @@
 
     <string name="country_cases">Cases\n%s</string>
     <string name="country_dead">Dead\n%s</string>
+    <string name="country_list">Country List</string>
 
 </resources>

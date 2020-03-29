@@ -1,9 +1,11 @@
 package com.ord.coronastats.ui.countrylist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +15,7 @@ import com.ord.coronastats.R
 import com.ord.coronastats.data.model.CountryStats
 import com.ord.coronastats.ui.country.CountryStatsViewModel
 import com.ord.coronastats.utils.InjectorUtils
-import kotlinx.android.synthetic.main.fragment_country_list.*
+import kotlinx.android.synthetic.main.fragment_countries.*
 
 class CountriesFragment : DialogFragment(), CountriesAdapter.OnItemClickListener {
 
@@ -31,18 +33,18 @@ class CountriesFragment : DialogFragment(), CountriesAdapter.OnItemClickListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_country_list, container, false)
+        return inflater.inflate(R.layout.fragment_countries, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = InjectorUtils.provideCountryListViewModelFactory().let {
-            ViewModelProvider(this, it).get(CountriesViewModel::class.java)
+            ViewModelProvider(activity?.viewModelStore ?: viewModelStore, it).get(CountriesViewModel::class.java)
         }
 
         countryStatsViewModel = InjectorUtils.provideCountryStatsViewModelFactory().let {
-            ViewModelProvider(activity!!, it).get(CountryStatsViewModel::class.java)
+            ViewModelProvider(activity?.viewModelStore ?: viewModelStore, it).get(CountryStatsViewModel::class.java)
         }
 
         bindUI()
@@ -50,13 +52,21 @@ class CountriesFragment : DialogFragment(), CountriesAdapter.OnItemClickListener
 
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        dialog?.window?.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
+    }
+
     private fun bindUI() {
 
         rvCountries = rv_countries
 
         viewModel.apply {
-            if (countries.value.isNullOrEmpty())
+            if (countries.value.isNullOrEmpty()) {
+                Log.i("COUNTRIES", "fetching...")
                 fetchCountriesWithStats()
+            }
             countries.observe(viewLifecycleOwner, Observer {
                 countriesList.clear()
                 countriesList.addAll(it)

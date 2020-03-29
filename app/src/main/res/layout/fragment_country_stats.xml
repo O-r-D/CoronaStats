@@ -3,15 +3,16 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".ui.country.CountryStatsFragment">
     <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" android:id="@+id/tv_country_name"
             tools:text="Lebanon" android:textColor="@android:color/black"
             android:textStyle="bold" android:textSize="30sp" android:fontFamily="monospace"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="30dp"
+            android:textAlignment="center"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
@@ -28,12 +29,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp" android:id="@+id/tv_cases_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
-                android:fontFamily="monospace"/>
+                android:fontFamily="monospace" android:textColor="@android:color/black"/>
         <TextView
                 android:text="@string/global_cases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_cases" android:layout_weight="1"
-                android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"/>
+                android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
+                android:textColor="@android:color/black"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -82,11 +84,14 @@
                 android:textColor="@color/colorPrimary"/>
     </LinearLayout>
     <Button
-            android:text="Change"
+            android:text="@string/country_list"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/btn_change_country"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:background="@drawable/shape_btn_country_stats"
+            android:textColor="@android:color/white"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>

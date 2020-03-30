@@ -50,26 +50,31 @@ class CountryStatsFragment : Fragment() {
 
         viewModel.countryStats.observe(viewLifecycleOwner, Observer {
             tv_cases_nb.text = String.format("%,d", it.cases)
-            if (it.todayCases != 0)
-                tv_cases.text = getString(
-                    R.string.country_cases,
-                    "(${String.format("%,d", it.todayCases)})"
-                )
+
+            tv_cases.text = getString(
+                R.string.country_cases,
+                if (it.todayCases != 0) "(${String.format("%,d", it.todayCases)})" else ""
+            )
 
             tv_deaths_nb.text = String.format("%,d", it.deaths)
-            if (it.todayDeaths != 0)
-                tv_deaths.text = getString(
-                    R.string.country_dead,
-                    "(${String.format("%,d", it.todayDeaths)})"
-                )
+
+            tv_deaths.text = getString(
+                R.string.country_dead,
+                if (it.todayDeaths != 0) "(${String.format("%,d", it.todayDeaths)})" else ""
+            )
 
             tv_recovered_nb.text = String.format("%,d", it.recovered)
+            tv_recovered.text = getString(R.string.country_recovered)
 
             tv_country_name.text = it.country
         })
 
         btn_change_country.setOnClickListener {
             goToCountryListFragment()
+        }
+
+        iv_refresh.setOnClickListener {
+            activity?.recreate()
         }
     }
 

@@ -6,10 +6,12 @@
     <string name="global_cases">Cases</string>
 
     <string name="main_total_cases">Total Cases</string>
+    <string name="main_last_updated">Last Updated: %s</string>
 
 
     <string name="country_cases">Cases\n%s</string>
     <string name="country_dead">Dead\n%s</string>
+    <string name="country_recovered">Recovered\n</string>
     <string name="country_list">Country List</string>
 
 </resources>

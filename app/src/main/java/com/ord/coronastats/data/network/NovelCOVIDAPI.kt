@@ -16,7 +16,7 @@ interface NovelCOVIDAPI {
     @GET("countries/{country}")
     fun getCountryStats(@Path("country") country: String): Call<CountryStats>
 
-    @GET("countries")
+    @GET("countries?sort=cases")
     fun getCountriesStats(): Call<List<CountryStats>>
 
     companion object{

@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_cases" android:layout_weight="1"
                 android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" android:gravity="center"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_deaths" android:layout_weight="1"
                 android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent" android:gravity="center"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_recovered" android:layout_weight="1"
                 android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary" android:gravity="center"/>
     </LinearLayout>
     <Button
             android:text="@string/country_list"

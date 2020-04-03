@@ -64,7 +64,6 @@ class CountriesFragment : DialogFragment(), CountriesAdapter.OnItemClickListener
 
         viewModel.apply {
             if (countries.value.isNullOrEmpty()) {
-                Log.i("COUNTRIES", "fetching...")
                 fetchCountriesWithStats()
             }
             countries.observe(viewLifecycleOwner, Observer {

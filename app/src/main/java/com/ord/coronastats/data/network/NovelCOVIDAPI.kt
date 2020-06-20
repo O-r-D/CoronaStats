@@ -22,7 +22,7 @@ interface NovelCOVIDAPI {
     companion object{
         operator fun invoke(): NovelCOVIDAPI{
             return Retrofit.Builder()
-                .baseUrl("https://corona.lmao.ninja/")
+                .baseUrl("https://disease.sh/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(NovelCOVIDAPI::class.java)

@@ -16,72 +16,76 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
-            android:background="@drawable/shape_cases_stat"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="150dp" android:layout_marginEnd="150dp" android:id="@+id/linearLayout3"
-            android:padding="10dp"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            android:layout_marginStart="100dp" android:layout_marginEnd="100dp" android:id="@+id/linearLayout3"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/tv_country_name" android:layout_marginTop="16dp"
-            app:layout_constraintDimensionRatio="h,1:1">
+    >
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" android:id="@+id/tv_cases_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
-                android:fontFamily="monospace" android:textColor="@android:color/black"/>
+                android:fontFamily="monospace" android:textColor="@android:color/black"
+                android:background="@android:color/white"/>
         <TextView
                 android:text="@string/global_cases"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_cases" android:layout_weight="1"
-                android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
-                android:textColor="@android:color/black" android:gravity="center"/>
+                android:textAlignment="center" android:fontFamily="monospace" android:textSize="16sp"
+                android:textColor="@android:color/white" android:gravity="center"
+                android:background="#5E5E5E"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="150dp" android:layout_marginEnd="150dp"
+            android:layout_marginStart="100dp" android:layout_marginEnd="100dp"
             android:id="@+id/linearLayout" app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            android:layout_marginTop="24dp" android:padding="10dp" android:background="@drawable/shape_death_stat"
-            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintDimensionRatio="h,1:1">
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    >
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" android:id="@+id/tv_deaths_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
-                android:fontFamily="monospace" android:textColor="@color/colorAccent"/>
+                android:fontFamily="monospace" android:textColor="@color/colorAccent"
+                android:background="@android:color/white"/>
         <TextView
                 android:text="@string/global_dead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_deaths" android:layout_weight="1"
-                android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
-                android:textColor="@color/colorAccent" android:gravity="center"/>
+                android:textAlignment="center" android:fontFamily="monospace" android:textSize="16sp"
+                android:textColor="@android:color/white" android:gravity="center"
+                android:background="@color/colorAccent"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="150dp" android:layout_marginEnd="150dp"
+            android:layout_marginStart="100dp" android:layout_marginEnd="100dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:layout_marginTop="24dp"
-            android:padding="10dp" android:background="@drawable/shape_recovered_stat" android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout2"
             app:layout_constraintHorizontal_bias="0.5" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_change_country" app:layout_constraintDimensionRatio="h,1:1">
+            app:layout_constraintBottom_toTopOf="@+id/btn_change_country">
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" android:id="@+id/tv_recovered_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
-                android:fontFamily="monospace" android:textColor="@color/colorPrimary"/>
+                android:fontFamily="monospace" android:textColor="@color/colorPrimary"
+                android:background="@android:color/white"/>
         <TextView
                 android:text="@string/global_recovered"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/tv_recovered" android:layout_weight="1"
-                android:textAlignment="center" android:fontFamily="monospace" android:textSize="12sp"
-                android:textColor="@color/colorPrimary" android:gravity="center"/>
+                android:textAlignment="center" android:fontFamily="monospace" android:textSize="16sp"
+                android:textColor="@android:color/white" android:gravity="center"
+                android:background="@color/colorPrimary"/>
     </LinearLayout>
     <Button
             android:text="@string/country_list"

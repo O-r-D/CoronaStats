@@ -5,14 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.country.CountryStatsFragment">
-    <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:theme="?attr/actionBarTheme"
-            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:elevation="4dp"/>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
@@ -20,19 +12,18 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="100dp" android:layout_marginEnd="100dp" android:id="@+id/linearLayout3"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-    >
+            app:layout_constraintTop_toTopOf="parent">
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" android:id="@+id/tv_cases_nb" android:layout_weight="1"
+                android:layout_height="50dp" android:id="@+id/tv_world_cases_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
                 android:fontFamily="monospace" android:textColor="@android:color/black"
                 android:background="@android:color/white"/>
         <TextView
                 android:text="@string/global_cases"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/tv_cases" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/tv_world_cases" android:layout_weight="1"
                 android:textAlignment="center" android:fontFamily="monospace" android:textSize="16sp"
                 android:textColor="@android:color/white" android:gravity="center"
                 android:background="#5E5E5E"/>
@@ -50,14 +41,14 @@
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" android:id="@+id/tv_deaths_nb" android:layout_weight="1"
+                android:layout_height="50dp" android:id="@+id/tv_world_deaths_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
                 android:fontFamily="monospace" android:textColor="@color/colorAccent"
                 android:background="@android:color/white"/>
         <TextView
                 android:text="@string/global_dead"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/tv_deaths" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/tv_world_deaths" android:layout_weight="1"
                 android:textAlignment="center" android:fontFamily="monospace" android:textSize="16sp"
                 android:textColor="@android:color/white" android:gravity="center"
                 android:background="@color/colorAccent"/>
@@ -70,37 +61,27 @@
             android:layout_marginStart="100dp" android:layout_marginEnd="100dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" android:layout_marginTop="24dp"
             android:id="@+id/linearLayout2"
-            app:layout_constraintHorizontal_bias="0.5" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_change_country">
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintBottom_toBottomOf="parent">
         <TextView
                 android:text="@string/global_empty_result"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" android:id="@+id/tv_recovered_nb" android:layout_weight="1"
+                android:layout_height="50dp" android:id="@+id/tv_world_recovered_nb" android:layout_weight="1"
                 android:textAlignment="center" android:gravity="center" android:textSize="18sp"
                 android:fontFamily="monospace" android:textColor="@color/colorPrimary"
                 android:background="@android:color/white"/>
         <TextView
                 android:text="@string/global_recovered"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/tv_recovered" android:layout_weight="1"
+                android:layout_height="wrap_content" android:id="@+id/tv_world_recovered" android:layout_weight="1"
                 android:textAlignment="center" android:fontFamily="monospace" android:textSize="16sp"
                 android:textColor="@android:color/white" android:gravity="center"
                 android:background="@color/colorPrimary"/>
     </LinearLayout>
-    <Button
-            android:text="@string/country_list"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_change_country"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="5dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:background="@drawable/shape_btn_country_stats"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toStartOf="@+id/iv_refresh"/>
     <ImageView
             android:layout_width="41dp"
-            android:layout_height="48dp" tools:src="@tools:sample/avatars" android:id="@+id/iv_refresh"
+            android:layout_height="48dp" tools:src="@tools:sample/avatars" android:id="@+id/iv_world_refresh"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="5dp" android:layout_marginEnd="8dp"
-            app:srcCompat="@drawable/ic_refresh_black_24dp" android:contentDescription="refresh"/>
+            app:srcCompat="@drawable/ic_refresh_black_24dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

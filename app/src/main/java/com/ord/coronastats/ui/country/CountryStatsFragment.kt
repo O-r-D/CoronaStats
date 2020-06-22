@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.countrylist.CountriesFragment
 import com.ord.coronastats.utils.InjectorUtils
@@ -71,7 +72,7 @@ class CountryStatsFragment : Fragment() {
             tv_recovered_nb.text = String.format("%,d", it.recovered)
             tv_recovered.text = getString(R.string.country_recovered)
 
-//            tv_country_name.text = it.country
+//          tv_country_name.text = it.country
 
             toolbar.title = it.country
             toolbar.setTitleTextColor(Color.WHITE)

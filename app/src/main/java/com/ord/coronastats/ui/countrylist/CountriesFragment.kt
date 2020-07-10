@@ -11,13 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ord.coronastats.R
 import com.ord.coronastats.data.model.CountryStats
 import com.ord.coronastats.ui.country.CountryStatsViewModel
 import com.ord.coronastats.utils.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_countries.*
 
-class CountriesFragment : DialogFragment(), CountriesAdapter.OnItemClickListener {
+class CountriesFragment : BottomSheetDialogFragment(), CountriesAdapter.OnItemClickListener {
 
     companion object {
         fun newInstance() = CountriesFragment()
@@ -50,12 +51,6 @@ class CountriesFragment : DialogFragment(), CountriesAdapter.OnItemClickListener
         bindUI()
 
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        dialog?.window?.setLayout(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
     }
 
     private fun bindUI() {

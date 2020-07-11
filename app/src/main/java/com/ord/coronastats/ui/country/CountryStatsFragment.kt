@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.telephony.TelephonyManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.countrylist.CountriesFragment
 import com.ord.coronastats.utils.InjectorUtils
@@ -26,6 +28,7 @@ class CountryStatsFragment : Fragment() {
 
     private lateinit var viewModel: CountryStatsViewModel
     private lateinit var country: String
+    private lateinit var swipeToRefresh: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,8 +75,6 @@ class CountryStatsFragment : Fragment() {
             tv_recovered_nb.text = String.format("%,d", it.recovered)
             tv_recovered.text = getString(R.string.country_recovered)
 
-//          tv_country_name.text = it.country
-
             toolbar.title = it.country
             toolbar.setTitleTextColor(Color.WHITE)
         })
@@ -82,9 +83,16 @@ class CountryStatsFragment : Fragment() {
             goToCountryListFragment()
         }
 
-        iv_refresh.setOnClickListener {
-            activity?.recreate()
+        swipeToRefresh = swipe_to_refresh
+        swipeToRefresh.setColorSchemeResources(R.color.colorPrimary)
+        swipeToRefresh.setOnRefreshListener {
+            refreshModelView()
+            swipeToRefresh.isRefreshing = false
         }
+    }
+
+    private fun refreshModelView() {
+        viewModel.fetchCountryStats(country)
     }
 
     private fun goToCountryListFragment() {

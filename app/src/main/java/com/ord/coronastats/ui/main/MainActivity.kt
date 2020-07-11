@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.adapter = ScreenSlidePagerAdapter(this)
 
-//        fragmenting(savedInstanceState)
 
     }
 
@@ -50,14 +49,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-//    private fun fragmenting(savedInstanceState: Bundle?) {
-//        if (fragment != null) {
-//
-//            if (savedInstanceState != null)
-//                return
-//
-//            supportFragmentManager.beginTransaction().add(R.id.fragment, CountryStatsFragment()).commit()
-//        }
-//    }
 }

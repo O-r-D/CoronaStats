@@ -8,12 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.countrylist.CountriesFragment
@@ -44,7 +42,7 @@ class CountryStatsFragment : Fragment() {
             ViewModelProvider(requireActivity(), it).get(CountryStatsViewModel::class.java)
         }
 
-        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(tb_country)
 
         country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "CH"
 
@@ -75,8 +73,8 @@ class CountryStatsFragment : Fragment() {
             tv_recovered_nb.text = String.format("%,d", it.recovered)
             tv_recovered.text = getString(R.string.country_recovered)
 
-            toolbar.title = it.country
-            toolbar.setTitleTextColor(Color.WHITE)
+            tb_country.title = it?.country
+            tb_country.setTitleTextColor(Color.WHITE)
         })
 
         btn_change_country.setOnClickListener {
@@ -86,13 +84,13 @@ class CountryStatsFragment : Fragment() {
         swipeToRefresh = swipe_to_refresh
         swipeToRefresh.setColorSchemeResources(R.color.colorPrimary)
         swipeToRefresh.setOnRefreshListener {
-            refreshModelView()
             swipeToRefresh.isRefreshing = false
+            refreshCountryStats()
         }
     }
 
-    private fun refreshModelView() {
-        viewModel.fetchCountryStats(country)
+    private fun refreshCountryStats() {
+        requireActivity().recreate()
     }
 
     private fun goToCountryListFragment() {

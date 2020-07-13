@@ -17,6 +17,9 @@ import com.ord.coronastats.R
 import com.ord.coronastats.ui.countrylist.CountriesFragment
 import com.ord.coronastats.utils.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_country_stats.*
+import kotlinx.android.synthetic.main.fragment_world.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CountryStatsFragment : Fragment() {
 
@@ -44,7 +47,7 @@ class CountryStatsFragment : Fragment() {
 
         (requireActivity() as AppCompatActivity).setSupportActionBar(tb_country)
 
-        country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "CH"
+        country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "US"
 
         viewModel.fetchCountryStats(country)
 
@@ -54,6 +57,8 @@ class CountryStatsFragment : Fragment() {
     }
 
     private fun bindUI() {
+
+        tb_country.subtitle = "Refreshing..."
 
         viewModel.countryStats.observe(viewLifecycleOwner, Observer {
             tv_cases_nb.text = String.format("%,d", it.cases)
@@ -73,8 +78,11 @@ class CountryStatsFragment : Fragment() {
             tv_recovered_nb.text = String.format("%,d", it.recovered)
             tv_recovered.text = getString(R.string.country_recovered)
 
-            tb_country.title = it?.country
-            tb_country.setTitleTextColor(Color.WHITE)
+            tb_country.title = it.country
+            tb_country.subtitle = getString(
+                R.string.main_last_updated,
+                SimpleDateFormat("EEEE, d MMMM yyyy - hh:mm:ss aa", Locale.getDefault()).format(it.updated)
+            )
         })
 
         btn_change_country.setOnClickListener {

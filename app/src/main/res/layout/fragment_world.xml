@@ -18,8 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:elevation="4dp"
             app:titleTextAppearance="@style/ToolbarTitle"
-            app:subtitleTextAppearance="@style/ToolbarSubtitle"
-    />
+            app:subtitleTextAppearance="@style/ToolbarSubtitle"/>
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -36,11 +35,11 @@
                     android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout3"
+                    android:id="@+id/ll_world_cases"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="100dp" android:layout_marginEnd="100dp"
-                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/linearLayout2">
+                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintBottom_toTopOf="@+id/ll_world_recovered">
                 <TextView
                         android:text="@string/global_empty_result"
                         android:layout_width="match_parent"
@@ -60,12 +59,12 @@
                     android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout2"
+                    android:id="@+id/ll_world_recovered"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="100dp"
                     android:layout_marginEnd="100dp"
-                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-                    app:layout_constraintBottom_toTopOf="@+id/linearLayout">
+                    app:layout_constraintHorizontal_bias="0.5" app:layout_constraintTop_toBottomOf="@+id/ll_world_cases"
+                    app:layout_constraintBottom_toTopOf="@+id/ll_world_dead">
                 <TextView
                         android:text="@string/global_empty_result"
                         android:layout_width="match_parent"
@@ -86,9 +85,9 @@
                     android:orientation="vertical"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/linearLayout"
+                    android:id="@+id/ll_world_dead"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_world_recovered" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="100dp"
                     android:layout_marginEnd="100dp">
                 <TextView

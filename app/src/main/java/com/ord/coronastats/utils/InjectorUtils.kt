@@ -5,12 +5,12 @@ import com.ord.coronastats.data.repository.CountryStatsRepository
 import com.ord.coronastats.data.repository.WorldStatsRepository
 import com.ord.coronastats.ui.country.CountryStatsViewModelFactory
 import com.ord.coronastats.ui.countrylist.CountriesViewModelFactory
-import com.ord.coronastats.ui.main.MainViewModelFactory
+import com.ord.coronastats.ui.world.WorldViewModelFactory
 
 object InjectorUtils {
 
-    fun provideMainViewModelFactory() =
-        MainViewModelFactory(WorldStatsRepository())
+    fun provideWorldViewModelFactory() =
+        WorldViewModelFactory(WorldStatsRepository())
 
     fun provideCountryStatsViewModelFactory() =
         CountryStatsViewModelFactory(CountryStatsRepository())

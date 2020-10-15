@@ -10,8 +10,6 @@ class CountryStatsViewModel(
     private val countryStatsRepository: CountryStatsRepository
 ) : ViewModel() {
 
-
-
     var countryStats = MutableLiveData<CountryStats>()
 
     fun fetchCountryStats(country: String) {

@@ -6,13 +6,17 @@ import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.countrylist.CountriesFragment
 import com.ord.coronastats.utils.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_country_stats.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CountryStatsFragment : Fragment() {
 
@@ -22,6 +26,7 @@ class CountryStatsFragment : Fragment() {
 
     private lateinit var viewModel: CountryStatsViewModel
     private lateinit var country: String
+    private lateinit var swipeToRefresh: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,10 +39,12 @@ class CountryStatsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = InjectorUtils.provideCountryStatsViewModelFactory().let {
-            ViewModelProvider(activity!!, it).get(CountryStatsViewModel::class.java)
+            ViewModelProvider(requireActivity(), it).get(CountryStatsViewModel::class.java)
         }
 
-        country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "CH"
+        (requireActivity() as AppCompatActivity).setSupportActionBar(tb_country)
+
+        country = (context?.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager).simCountryIso ?: "US"
 
         viewModel.fetchCountryStats(country)
 
@@ -47,6 +54,8 @@ class CountryStatsFragment : Fragment() {
     }
 
     private fun bindUI() {
+
+        tb_country.subtitle = "Refreshing..."
 
         viewModel.countryStats.observe(viewLifecycleOwner, Observer {
             tv_cases_nb.text = String.format("%,d", it.cases)
@@ -66,16 +75,27 @@ class CountryStatsFragment : Fragment() {
             tv_recovered_nb.text = String.format("%,d", it.recovered)
             tv_recovered.text = getString(R.string.country_recovered)
 
-            tv_country_name.text = it.country
+            tb_country.title = it.country
+            tb_country.subtitle = getString(
+                R.string.main_last_updated,
+                SimpleDateFormat("EEEE, d MMMM yyyy - hh:mm:ss aa", Locale.getDefault()).format(it.updated)
+            )
         })
 
         btn_change_country.setOnClickListener {
             goToCountryListFragment()
         }
 
-        iv_refresh.setOnClickListener {
-            activity?.recreate()
+        swipeToRefresh = swipe_to_refresh
+        swipeToRefresh.setColorSchemeResources(R.color.colorPrimary)
+        swipeToRefresh.setOnRefreshListener {
+            swipeToRefresh.isRefreshing = false
+            refreshCountryStats()
         }
+    }
+
+    private fun refreshCountryStats() {
+        requireActivity().recreate()
     }
 
     private fun goToCountryListFragment() {

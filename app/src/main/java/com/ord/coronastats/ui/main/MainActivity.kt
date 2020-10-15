@@ -2,54 +2,53 @@ package com.ord.coronastats.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.country.CountryStatsFragment
-import com.ord.coronastats.utils.InjectorUtils
+import com.ord.coronastats.ui.world.WorldFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import java.text.SimpleDateFormat
-import java.util.*
+
+
+private const val NUM_PAGES = 2
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MainViewModel
+
+    private lateinit var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragmenting(savedInstanceState)
+        viewPager = pager
 
-        viewModel = ViewModelProvider(
-            this,
-            InjectorUtils.provideMainViewModelFactory()
-        ).get(MainViewModel::class.java)
-
-        bindUI()
+        viewPager.adapter = ScreenSlidePagerAdapter(supportFragmentManager)
 
 
     }
 
-    private fun bindUI() {
-        viewModel.fetchWorldStats().observe(this, Observer {
-            tv_total_cases_nb.text = String.format("%,d", it.cases)
-            tv_dead_nb.text = String.format("%,d", it.deaths)
-            tv_recovered_nb.text = String.format("%,d", it.recovered)
-            tv_updated.text = getString(
-                R.string.main_last_updated,
-                SimpleDateFormat("EEEE, d MMMM yyyy - hh:mm:ss aa", Locale.getDefault()).format(it.updated)
-            )
-        })
+    override fun onBackPressed() {
+        if (viewPager.currentItem == 0)
+            super.onBackPressed()
+        else
+            viewPager.currentItem == 0
     }
 
-    private fun fragmenting(savedInstanceState: Bundle?) {
-        if (fragment != null) {
+    class ScreenSlidePagerAdapter(fragmentManager: FragmentManager) :
+        FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-            if (savedInstanceState != null)
-                return
-
-            supportFragmentManager.beginTransaction().add(R.id.fragment, CountryStatsFragment()).commit()
+        override fun getItem(position: Int): Fragment {
+            return when (position) {
+                0 -> CountryStatsFragment.newInstance()
+                1 -> WorldFragment.newInstance()
+                else -> WorldFragment.newInstance()
+            }
         }
+
+        override fun getCount(): Int = NUM_PAGES
+
     }
 }

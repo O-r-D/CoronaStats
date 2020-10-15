@@ -1,15 +1,11 @@
 package com.ord.coronastats.ui.main
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ord.coronastats.R
 import com.ord.coronastats.ui.country.CountryStatsFragment
 import com.ord.coronastats.ui.world.WorldFragment
@@ -41,7 +37,8 @@ class MainActivity : AppCompatActivity() {
             viewPager.currentItem == 0
     }
 
-    class ScreenSlidePagerAdapter(fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    class ScreenSlidePagerAdapter(fragmentManager: FragmentManager) :
+        FragmentStatePagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
         override fun getItem(position: Int): Fragment {
             return when (position) {

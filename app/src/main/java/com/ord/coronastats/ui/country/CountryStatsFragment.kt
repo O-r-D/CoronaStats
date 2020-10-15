@@ -1,10 +1,8 @@
 package com.ord.coronastats.ui.country
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.telephony.TelephonyManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +15,6 @@ import com.ord.coronastats.R
 import com.ord.coronastats.ui.countrylist.CountriesFragment
 import com.ord.coronastats.utils.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_country_stats.*
-import kotlinx.android.synthetic.main.fragment_world.*
 import java.text.SimpleDateFormat
 import java.util.*
 
